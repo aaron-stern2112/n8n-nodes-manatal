@@ -1,0 +1,11 @@
+{
+	"node": "@manatal/n8n-nodes-manatal.manatalTrigger",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Productivity"],
+	"resources": {
+		"primaryDocumentation": [{ "url": "https://developers.manatal.com/reference/getting-started" }],
+		"credentialDocumentation": [{ "url": "https://support.manatal.com/docs/manatal-api" }]
+	},
+	"alias": ["ATS", "recruiting", "HR", "trigger", "webhook", "hiring", "talent acquisition"]
+}
