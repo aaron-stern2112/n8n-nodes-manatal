@@ -22,7 +22,6 @@ import {
 	normalizeDateField,
 	normalizeLocatorField,
 	normalizeManatalId,
-	parseJsonField,
 } from '../GenericFunctions';
 
 export async function matchExecute(
@@ -49,7 +48,6 @@ export async function matchExecute(
 		for (const f of ['dropped_at', 'hired_at', 'interview_at', 'offer_at', 'submitted_at']) {
 			normalizeDateField(body, f);
 		}
-		parseJsonField(body, 'custom_fields');
 		return manatalApiRequest.call(this, 'POST', '/matches/', body);
 	}
 
@@ -60,8 +58,6 @@ export async function matchExecute(
 		for (const f of ['dropped_at', 'hired_at', 'interview_at', 'offer_at', 'submitted_at']) {
 			normalizeDateField(updateFields, f);
 		}
-		parseJsonField(updateFields, 'custom_fields');
-
 		// The Manatal API requires pipeline stage as a nested object, not a flat ID
 		if (updateFields.job_pipeline_stage !== undefined && updateFields.job_pipeline_stage !== '') {
 			updateFields.job_pipeline_stage = { id: normalizeManatalId(updateFields.job_pipeline_stage) };

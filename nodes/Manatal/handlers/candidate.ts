@@ -10,8 +10,7 @@
  *   body, so this enrichment step avoids making users chain multiple nodes.
  * - GetMany: forwards any filter parameters the user has set, normalising
  *   resourceLocator fields (e.g. owner_id) before sending the request.
- * - Create / Update: parses custom_fields from a JSON string if needed, since
- *   the API requires a JSON object but users often paste raw JSON.
+ * - Create / Update: normalises owner locator and date fields before sending.
  */
 
 import type { IDataObject, IExecuteFunctions } from 'n8n-workflow';
@@ -24,7 +23,6 @@ import {
 	manatalApiRequest,
 	normalizeDateField,
 	normalizeLocatorField,
-	parseJsonField,
 } from '../GenericFunctions';
 
 export async function candidateExecute(
@@ -57,7 +55,6 @@ export async function candidateExecute(
 		normalizeLocatorField(additionalFields, 'owner');
 		const body: IDataObject = { full_name: fullName, ...additionalFields };
 		normalizeDateField(body, 'birth_date');
-		parseJsonField(body, 'custom_fields');
 		return manatalApiRequest.call(this, 'POST', '/candidates/', body);
 	}
 
@@ -66,7 +63,6 @@ export async function candidateExecute(
 		const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
 		normalizeLocatorField(updateFields, 'owner');
 		normalizeDateField(updateFields, 'birth_date');
-		parseJsonField(updateFields, 'custom_fields');
 		return manatalApiRequest.call(this, 'PATCH', `/candidates/${id}/`, updateFields);
 	}
 

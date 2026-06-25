@@ -244,14 +244,6 @@ export const matchFields: INodeProperties[] = [
 		},
 		options: [
 			{
-				displayName: 'Custom Fields',
-				name: 'custom_fields',
-				type: 'json',
-				default: '{}',
-				description:
-					'Custom field values as a JSON object. Must be a full object - partial updates will overwrite existing values.',
-			},
-			{
 				displayName: 'Dropped At',
 				name: 'dropped_at',
 				type: 'dateTime',
@@ -335,14 +327,6 @@ export const matchFields: INodeProperties[] = [
 			show: { resource: ['match'], operation: ['update'] },
 		},
 		options: [
-			{
-				displayName: 'Custom Fields',
-				name: 'custom_fields',
-				type: 'json',
-				default: '{}',
-				description:
-					'Custom field values as a JSON object. Must be a full object - partial updates will overwrite existing values.',
-			},
 			{
 				displayName: 'Dropped At',
 				name: 'dropped_at',
