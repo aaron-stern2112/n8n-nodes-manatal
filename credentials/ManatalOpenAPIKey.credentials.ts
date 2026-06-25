@@ -42,7 +42,6 @@ export class ManatalOpenAPIKey implements ICredentialType {
 		},
 	];
 
-	// Injects the token as a Bearer-style "Token" header on every HTTP request
 	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
 		properties: {
