@@ -65,5 +65,9 @@ export async function matchExecute(
 		return manatalApiRequest.call(this, 'PATCH', `/matches/${id}/`, updateFields);
 	}
 
-	throw new NodeOperationError(this.getNode(), `Unknown operation "${operation}" for resource "match"`, { itemIndex: i });
+	throw new NodeOperationError(
+		this.getNode(),
+		`Unknown operation "${operation}" for resource "match"`,
+		{ itemIndex: i },
+	);
 }

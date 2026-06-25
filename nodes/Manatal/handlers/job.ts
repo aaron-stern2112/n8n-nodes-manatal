@@ -60,5 +60,9 @@ export async function jobExecute(
 		return manatalApiRequest.call(this, 'PATCH', `/jobs/${id}/`, updateFields);
 	}
 
-	throw new NodeOperationError(this.getNode(), `Unknown operation "${operation}" for resource "job"`, { itemIndex: i });
+	throw new NodeOperationError(
+		this.getNode(),
+		`Unknown operation "${operation}" for resource "job"`,
+		{ itemIndex: i },
+	);
 }

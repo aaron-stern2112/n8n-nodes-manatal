@@ -54,5 +54,9 @@ export async function contactExecute(
 		return manatalApiRequest.call(this, 'PATCH', `/contacts/${id}/`, updateFields);
 	}
 
-	throw new NodeOperationError(this.getNode(), `Unknown operation "${operation}" for resource "contact"`, { itemIndex: i });
+	throw new NodeOperationError(
+		this.getNode(),
+		`Unknown operation "${operation}" for resource "contact"`,
+		{ itemIndex: i },
+	);
 }
